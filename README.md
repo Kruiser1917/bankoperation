@@ -19,3 +19,9 @@
 ```bash
 poetry install
 ```
+## Тестирование
+
+Проект покрыт тестами с использованием библиотеки `pytest`. Для запуска тестов выполните команду:
+
+```bash
+poetry run pytest --cov=src --cov-report=term-missing

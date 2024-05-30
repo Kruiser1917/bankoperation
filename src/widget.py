@@ -1,31 +1,30 @@
 # Модуль widget с функцией для обработки входных данных и применения маскировки
-from src.masks import mask_account_number
-from src.masks import mask_card_number
 
+from src.masks import mask_card_number, mask_account_number
 
 def universal_masking(input_data: str) -> str:
     """
     Маскирует номер кредитной карты или счета в зависимости от входных данных.
 
     Args:
-        input_data (str): Входная строка с типом и номером (например, "Visa 1234567890123456").
+    input_data (str): Входная строка с типом и номером (например, "Visa Platinum 1234567812345678").
 
     Returns:
-        str: Исходная строка с маскированным номером.
+    str: Исходная строка с маскированным номером.
     """
-
     parts = input_data.split()
-    if parts[0] == "Счет":
+    if "Счет" in parts[0]:
         account_number = parts[-1]
         masked_number = mask_account_number(account_number)
         return f"{' '.join(parts[:-1])} {masked_number}"
     else:
-        card_number = "".join(parts[-4:])
+        card_number = ''.join(parts[2:])
         if len(card_number) == 16:
             masked_number = mask_card_number(card_number)
-            return f"{' '.join(parts[:-4])} {masked_number[:4]} {masked_number[5:7]}{masked_number[7:9]} {masked_number[10:14]} {masked_number[15:]}"
+            # Объединяем тип и маскированный номер карты без лишних пробелов
+            return f"{parts[0]} {parts[1]} {masked_number[:4]} {masked_number[5:7]}** **** {masked_number[-4:]}"
         else:
-            return f"{' '.join(parts[:-4])} Card number must be exactly 16 digits long"
+            return f"{parts[0]} {parts[1]} Card number must be exactly 16 digits long"
 
 
 # Функция для преобразования строки с датой и временем в формате
