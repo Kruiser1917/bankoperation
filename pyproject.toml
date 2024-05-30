@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "pythonproject"
+version = "0.1.0"
+description = ""
+authors = ["aptik <aptik@DESKTOP-SVN8V0A>"]
+readme = "README.md"
+
+[tool.poetry.group.lint.dependencies]
+black = "^24.4.2"
+isort = "^5.13.2"
+mypy = "^1.10.0"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.mypy]
+warn_return_any = true
+check_untyped_defs = true
+
+
+[tool.black]
+line-length = 129
+
+
+[tool.isort]
+line_lenght = 119
