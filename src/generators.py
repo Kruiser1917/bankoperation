@@ -1,19 +1,9 @@
 from typing import List, Dict, Generator
 
 
-def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:
-    """
-    Фильтрует операции по заданной валюте.
-
-    Args:
-        transactions (List[Dict]): Список операций.
-        currency (str): Валюта для фильтрации.
-
-    Yields:
-        Dict: Операции, соответствующие заданной валюте.
-    """
+def filter_by_currency(transactions, currency):
     for transaction in transactions:
-        if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency:
+        if transaction['operationAmount']['currency']['code'] == currency:
             yield transaction
 
 

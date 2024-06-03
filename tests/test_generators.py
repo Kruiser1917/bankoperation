@@ -85,7 +85,7 @@ def transactions():
 
 @pytest.mark.parametrize("currency, expected_ids", [
     ("USD", [939719570, 142264268, 895315941]),
-    ("руб.", [873106923, 594226727]),
+    ("RUB", [873106923, 594226727]),
 ])
 def test_filter_by_currency(transactions, currency, expected_ids):
     filtered_transactions = filter_by_currency(transactions, currency)
