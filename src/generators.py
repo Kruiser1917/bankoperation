@@ -1,9 +1,9 @@
-from typing import List, Dict, Generator
+from typing import Dict, Generator, List
 
 
 def filter_by_currency(transactions, currency):
     for transaction in transactions:
-        if transaction['operationAmount']['currency']['code'] == currency:
+        if transaction["operationAmount"]["currency"]["code"] == currency:
             yield transaction
 
 
@@ -22,6 +22,7 @@ def transaction_descriptions(transactions: List[Dict]) -> Generator[str, None, N
 
 
 # src/generators.py
+
 
 def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
     """

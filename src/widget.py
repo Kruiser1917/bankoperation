@@ -1,6 +1,7 @@
 # Модуль widget с функцией для обработки входных данных и применения маскировки
 
-from src.masks import mask_card_number, mask_account_number
+from src.masks import mask_account_number, mask_card_number
+
 
 def universal_masking(input_data: str) -> str:
     """
@@ -18,7 +19,7 @@ def universal_masking(input_data: str) -> str:
         masked_number = mask_account_number(account_number)
         return f"{' '.join(parts[:-1])} {masked_number}"
     else:
-        card_number = ''.join(parts[2:])
+        card_number = "".join(parts[2:])
         if len(card_number) == 16:
             masked_number = mask_card_number(card_number)
             # Объединяем тип и маскированный номер карты без лишних пробелов

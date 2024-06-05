@@ -3,7 +3,7 @@
 import functools
 import logging
 import sys  # Добавляем импорт sys
-from typing import Callable, Any, Optional
+from typing import Any, Callable, Optional
 
 
 def log(filename: Optional[str] = None) -> Callable:
@@ -25,7 +25,7 @@ def log(filename: Optional[str] = None) -> Callable:
         handler = logging.StreamHandler()
 
     handler.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(message)s')
+    formatter = logging.Formatter("%(message)s")
     handler.setFormatter(formatter)
     if logger.hasHandlers():
         logger.handlers.clear()
