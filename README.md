@@ -41,6 +41,7 @@ python
 usd_transactions = filter_by_currency(transactions, "USD")
 
 for _ in range(3):
+
     print(next(usd_transactions)["id"])
 
 ## Декораторы
@@ -60,4 +61,7 @@ def my_function(x, y):
 
 my_function(1, 2)
 ```
+
+=======
+    print(next(usd_transactions)["id"])
 

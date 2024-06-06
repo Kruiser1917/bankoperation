@@ -11,7 +11,11 @@ transactions = [
     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
     {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
     {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
+
     {"id": 615004591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
+=======
+    {"id": 615004591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"}
+
 ]
 
 # Список словарей для generators.py
@@ -23,7 +27,11 @@ transactions1 = [
         "operationAmount": {"amount": "9824.07", "currency": {"name": "USD", "code": "USD"}},
         "description": "Номер операции",
         "from": "Cчет 75186830613657916952",
+
         "to": "Счет 11776614605963066702",
+=======
+        "to": "Счет 11776614605963066702"
+
     },
     {
         "id": 142264268,
@@ -32,7 +40,11 @@ transactions1 = [
         "operationAmount": {"amount": "79114.93", "currency": {"name": "USD", "code": "USD"}},
         "description": "Перевод со счета на счет",
         "from": "Cчет 19768645243227258542",
+
         "to": "Счет 75651667583060284188",
+=======
+        "to": "Счет 75651667583060284188"
+
     },
     {
         "id": 873106923,
@@ -41,7 +53,11 @@ transactions1 = [
         "operationAmount": {"amount": "43318.34", "currency": {"name": "RUB", "code": "RUB"}},
         "description": "Перевод со счета на счет",
         "from": "Cчет 44812258784861134719",
+
         "to": "Счет 74489636417521191160",
+=======
+        "to": "Счет 74489636417521191160"
+
     },
     {
         "id": 895515941,
@@ -50,7 +66,11 @@ transactions1 = [
         "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
         "description": "Перевод с карты на карту",
         "from": "Visa Classic 6831982476737658",
+
         "to": "Visa Platinum 8990922113665229",
+=======
+        "to": "Visa Platinum 8990922113665229"
+
     },
     {
         "id": 594226727,
@@ -59,8 +79,13 @@ transactions1 = [
         "operationAmount": {"amount": "67314.70", "currency": {"name": "RUB", "code": "RUB"}},
         "description": "Номер операции",
         "from": "Visa Platinum 22427837705343588",
+
         "to": "Счет 14226426821044501587",
     },
+=======
+        "to": "Счет 14226426821044501587"
+    }
+
 ]
 
 # Маскирование счетов и карт
@@ -89,7 +114,10 @@ pp.pprint(sorted_transactions)
 # Фильтрация по валюте
 usd_transactions = filter_by_currency(transactions1, currency="USD")
 for _ in range(3):
+
     print(next(usd_transactions)["id"])
+=======
+
 
 # Описание транзакций
 descriptions = transaction_descriptions(transactions1)

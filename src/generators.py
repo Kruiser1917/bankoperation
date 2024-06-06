@@ -1,9 +1,27 @@
+
 from typing import Dict, Generator, List
 
 
 def filter_by_currency(transactions, currency):
     for transaction in transactions:
         if transaction["operationAmount"]["currency"]["code"] == currency:
+
+
+
+def filter_by_currency(transactions: List[Dict], currency: str) -> Generator[Dict, None, None]:
+    """
+    Фильтрует операции по заданной валюте.
+
+    Args:
+        transactions (List[Dict]): Список операций.
+        currency (str): Валюта для фильтрации.
+
+    Yields:
+        Dict: Операции, соответствующие заданной валюте.
+    """
+    for transaction in transactions:
+        if transaction.get("operationAmount", {}).get("currency", {}).get("code") == currency:
+
             yield transaction
 
 
@@ -23,6 +41,9 @@ def transaction_descriptions(transactions: List[Dict]) -> Generator[str, None, N
 
 # src/generators.py
 
+
+
+=======
 
 def card_number_generator(start: int, end: int) -> Generator[str, None, None]:
     """
