@@ -1,6 +1,8 @@
 # src/processing.py
 
-from typing import List, Dict
+
+from typing import Dict, List
+
 
 
 def filter_by_state(records: List[Dict], state: str = 'EXECUTED') -> List[Dict]:

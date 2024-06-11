@@ -41,4 +41,27 @@ python
 usd_transactions = filter_by_currency(transactions, "USD")
 
 for _ in range(3):
+
     print(next(usd_transactions)["id"])
+
+## Декораторы
+
+### log
+
+Декоратор `log` логирует вызовы функции и их результаты. Логи могут записываться в файл или выводиться в консоль.
+
+#### Пример использования
+
+```python
+from src.decorators import log
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
+```
+
+=======
+    print(next(usd_transactions)["id"])
+

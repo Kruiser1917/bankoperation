@@ -2,3 +2,4 @@ my_function ok
 my_function_error ok
 my_function ok
 my_function_error ok
+
