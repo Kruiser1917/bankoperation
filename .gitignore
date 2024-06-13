@@ -3,4 +3,12 @@
 .mypy_cache/
 .coverage
 __pycache__/
+.env
+
+.coverage
+__pycache__/
+.env
+
+.coverage
+__pycache__/
 
