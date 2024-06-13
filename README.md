@@ -34,22 +34,8 @@ poetry run pytest --cov=src --cov-report=term-missing
 #### filter_by_currency
 
 
-Функции
-utils.py
-load_operations_from_json(filepath: str) -> List[Dict[str, Any]]
-Читает данные о транзакциях из JSON-файла и возвращает список словарей. Если файл пустой, содержит не список или не найден, функция возвращает пустой список.
-external_api.py
-convert_to_rub(transaction: Dict[str, Any]) -> float
-Конвертирует сумму транзакции в рубли. Если транзакция была в USD или EUR, происходит обращение к внешнему API для получения текущего курса валют и конвертации суммы операции в рубли.
-decorators.py
-log
-Декоратор для логирования вызова функций и их результатов. Логи могут записываться в файл или выводиться в консоль.
-generators.py
-filter_by_currency(transactions: List[Dict[str, Any]], currency: str) -> Iterator[Dict[str, Any]]
 
-Фильтрует транзакции по указанной валюте и возвращает итератор.
-transaction_descriptions(transactions: List[Dict[str, Any]]) -> Iterator[str]
-
+feature/homework_12.1
 Возвращает описания каждой транзакции по очереди.
 card_number_generator(start: int, end: int) -> Iterator[str]
 
@@ -68,3 +54,29 @@ format_datetime_to_date(datetime_str: str) -> str
 universal_masking(input_str: str) -> str
 
 Маскирует номер карты или счета.
+=======
+for _ in range(3):
+
+    print(next(usd_transactions)["id"])
+
+## Декораторы
+
+### log
+
+Декоратор `log` логирует вызовы функции и их результаты. Логи могут записываться в файл или выводиться в консоль.
+
+#### Пример использования
+
+```python
+from src.decorators import log
+
+@log(filename="mylog.txt")
+def my_function(x, y):
+    return x + y
+
+my_function(1, 2)
+```
+
+=======
+    print(next(usd_transactions)["id"])
+
