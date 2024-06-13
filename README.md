@@ -35,23 +35,6 @@ poetry run pytest --cov=src --cov-report=term-missing
 
 
 
-feature/homework_12.1
-Возвращает описания каждой транзакции по очереди.
-card_number_generator(start: int, end: int) -> Iterator[str]
-
-Генерирует номера банковских карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне.
-processing.py
-filter_by_state(transactions: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]
-
-Фильтрует транзакции по состоянию.
-sort_by_date(transactions: List[Dict[str, Any]], order: bool = True) -> List[Dict[str, Any]]
-
-Сортирует транзакции по дате.
-widget.py
-format_datetime_to_date(datetime_str: str) -> str
-
-Форматирует строку даты и времени в формат даты.
-universal_masking(input_str: str) -> str
 
 Маскирует номер карты или счета.
 =======
@@ -80,3 +63,22 @@ my_function(1, 2)
 =======
     print(next(usd_transactions)["id"])
 
+
+## Функции
+
+Возвращает описания каждой транзакции по очереди.
+card_number_generator(start: int, end: int) -> Iterator[str]
+
+Генерирует номера банковских карт в формате XXXX XXXX XXXX XXXX в заданном диапазоне.
+processing.py
+filter_by_state(transactions: List[Dict[str, Any]], state: str = "EXECUTED") -> List[Dict[str, Any]]
+
+Фильтрует транзакции по состоянию.
+sort_by_date(transactions: List[Dict[str, Any]], order: bool = True) -> List[Dict[str, Any]]
+
+Сортирует транзакции по дате.
+widget.py
+format_datetime_to_date(datetime_str: str) -> str
+
+Форматирует строку даты и времени в формат даты.
+universal_masking(input_str: str) -> str
