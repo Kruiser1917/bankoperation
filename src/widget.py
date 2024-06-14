@@ -3,6 +3,7 @@
 
 from src.masks import mask_card_number, mask_account_number
 
+
 def universal_masking(input_data: str) -> str:
     """
     Маскирует номер кредитной карты или счета в зависимости от входных данных.

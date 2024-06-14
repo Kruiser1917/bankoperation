@@ -1,33 +1,21 @@
-# src/processing.py
+from typing import List, Dict
 
 
-from typing import Dict, List
-
-
-
-def filter_by_state(records: List[Dict], state: str = 'EXECUTED') -> List[Dict]:
+def filter_by_state(transactions: List[Dict], state: str = "EXECUTED") -> List[Dict]:
     """
-    Фильтрует список словарей по значению ключа 'state'.
-
-    Args:
-    records (List[Dict]): Список словарей.
-    state (str, optional): Значение ключа 'state' для фильтрации. По умолчанию 'EXECUTED'.
-
-    Returns:
-    List[Dict]: Новый список, содержащий только словари с указанным значением 'state'.
+    Фильтрует транзакции по состоянию.
+    :param transactions: Список транзакций
+    :param state: Состояние транзакций для фильтрации (по умолчанию "EXECUTED")
+    :return: Отфильтрованный список транзакций
     """
-    return [record for record in records if record.get('state') == state]
+    return [transaction for transaction in transactions if transaction.get("state") == state]
 
 
-def sort_by_date(records: List[Dict], descending: bool = True) -> List[Dict]:
+def sort_by_date(transactions: List[Dict], ascending: bool = False) -> List[Dict]:
     """
-    Сортирует список словарей по ключу 'date'.
-
-    Args:
-    records (List[Dict]): Список словарей.
-    descending (bool, optional): Порядок сортировки. True для убывания, False для возрастания. По умолчанию True.
-
-    Returns:
-    List[Dict]: Новый список, отсортированный по ключу 'date'.
+    Сортирует транзакции по дате.
+    :param transactions: Список транзакций
+    :param ascending: Сортировка в порядке возрастания (по умолчанию False)
+    :return: Отсортированный список транзакций
     """
-    return sorted(records, key=lambda x: x['date'], reverse=descending)
+    return sorted(transactions, key=lambda x: x["date"], reverse=not ascending)
