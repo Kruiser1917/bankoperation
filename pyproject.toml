@@ -4,18 +4,17 @@ version = "0.1.0"
 description = ""
 authors = ["aptik <aptik@DESKTOP-SVN8V0A>"]
 readme = "README.md"
+packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = ">=3.8.1"
+requests = "^2.25.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.1"
 pytest-cov = "^5.0.0"
-
 isort = "^5.13.2"
 black = "^24.4.2"
-=======
-
 
 [tool.poetry.group.lint.dependencies]
 black = "^24.4.2"
@@ -27,15 +26,12 @@ flake8 = "^7.0.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-
 [tool.mypy]
 warn_return_any = true
 check_untyped_defs = true
 
-
 [tool.black]
 line-length = 129
-
 
 [tool.isort]
 profile = "black"
