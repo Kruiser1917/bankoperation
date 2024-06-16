@@ -1,35 +1,36 @@
 import json
 import logging
-import os
-from typing import List, Dict
 
-# Создаем директорию logs, если она не существует
-os.makedirs('logs', exist_ok=True)
-
-# Настройка логера
+# Настройка логирования для модуля utils
 logger = logging.getLogger(__name__)
 handler = logging.FileHandler('logs/utils.log', mode='w')
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 handler.setFormatter(formatter)
 logger.addHandler(handler)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.ERROR)
 
+def read_json(file_path):
+    """
+    Читает JSON-файл и возвращает данные в виде списка словарей.
+    Если файл пуст, не найден или содержит некорректные данные,
+    возвращается пустой список.
 
-def read_json_file(filepath: str) -> List[Dict]:
-    """Чтение данных из JSON-файла и возврат списка словарей с транзакциями."""
-    logger.info(f'Чтение файла: {filepath}')
+    :param file_path: Путь к JSON-файлу
+    :return: Список словарей с данными или пустой список
+    """
     try:
-        with open(filepath, 'r', encoding='utf-8') as file:
+        with open(file_path, 'r') as file:
             data = json.load(file)
             if isinstance(data, list):
-                logger.info(f'Успешное чтение файла: {filepath}')
                 return data
             else:
-                logger.warning(f'Файл {filepath} не содержит список.')
+                logger.error("JSON data is not a list")
                 return []
     except FileNotFoundError:
-        logger.error(f'Файл {filepath} не найден.')
+        logger.error(f"File not found: {file_path}")
         return []
     except json.JSONDecodeError:
-        logger.error(f'Ошибка декодирования JSON в файле {filepath}.')
+        logger.error("Failed to decode JSON")
         return []
+
+# Добавьте другие функции модуля utils, если они есть, с соответствующей настройкой логирования

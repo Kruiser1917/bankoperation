@@ -15,6 +15,7 @@ pytest = "^8.2.1"
 pytest-cov = "^5.0.0"
 isort = "^5.13.2"
 black = "^24.4.2"
+flake8 = "^7.1.0"
 
 [tool.poetry.group.lint.dependencies]
 black = "^24.4.2"
@@ -36,3 +37,4 @@ line-length = 129
 [tool.isort]
 profile = "black"
 line_length = 119
+skip = ["venv", ".git", "__pycache__", "src/__pycache__", "tests/__pycache__"]
