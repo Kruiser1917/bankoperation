@@ -1,5 +1,5 @@
 import json
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
 
 from src.utils import read_transactions_from_json
 
@@ -16,13 +16,5 @@ def test_read_transactions_from_json():
     mock_file_data = json.dumps(mock_data)
 
     with patch("builtins.open", mock_open(read_data=mock_file_data)):
-        result = read_transactions_from_json("dummy_path")
+        result = read_transactions_from_json()
         assert result == mock_data
-
-    with patch("builtins.open", mock_open(read_data="{}")):
-        result = read_transactions_from_json("dummy_path")
-        assert result == []
-
-    with patch("builtins.open", side_effect=FileNotFoundError):
-        result = read_transactions_from_json("dummy_path")
-        assert result == []

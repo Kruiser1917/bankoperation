@@ -1,6 +1,6 @@
 from unittest.mock import patch
 
-from src.external_api import get_exchange_rate, convert_to_rub
+from src.external_api import convert_to_rub, get_exchange_rate
 
 
 @patch("src.external_api.requests.get")
