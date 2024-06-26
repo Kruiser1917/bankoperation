@@ -1,2 +1,1 @@
-2024-06-16 15:03:28,351 - src.masks - ERROR - Card number must be exactly 16 digits long
-2024-06-16 15:03:28,353 - src.masks - ERROR - Account number must be at least 6 digits long
+2024-06-26 13:38:39,295 - masks - INFO - маскировки карты
