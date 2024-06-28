@@ -6,35 +6,42 @@ from src.masks import mask_account_number, mask_card_number
 from src.utils import read_transactions_from_json, read_transactions_from_csv, read_transactions_from_excel
 from src.widget import format_datetime_to_date
 
-# Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def sort_by_date(transactions, descending=True):
+    """
+    Сортирует транзакции по дате.
+
+    Args:
+        transactions (list): Список транзакций.
+        descending (bool): Если True, сортировка будет в порядке убывания.
+
+    Returns:
+        list: Отсортированный список транзакций.
+    """
     transactions_with_date = []
-    for t in transactions:
-        date_value = t.get('date')
-        if date_value:
-            if isinstance(date_value, (float, int)):
-                # Если дата представлена числом, преобразуем её в строку
-                date_str = str(date_value)
-                try:
-                    date_obj = datetime.fromisoformat(date_str)
-                    t['date'] = date_obj.isoformat()
-                except ValueError:
-                    logger.error(f"Invalid date format: {date_value}")
-            elif isinstance(date_value, str):
-                try:
-                    date_obj = datetime.fromisoformat(date_value)
-                    t['date'] = date_obj.isoformat()
-                except ValueError:
-                    logger.error(f"Invalid date format: {date_value}")
-            transactions_with_date.append(t)
+    for transaction in transactions:
+        try:
+            if isinstance(transaction['date'], str):
+                transaction['date'] = datetime.fromisoformat(transaction['date'])
+            transactions_with_date.append(transaction)
+        except (KeyError, ValueError) as e:
+            logger.error(f"Error parsing date in transaction: {e}")
     return sorted(transactions_with_date, key=lambda x: x['date'], reverse=descending)
 
 
 def main(file_path):
+    """
+    Основная функция для запуска скрипта.
+
+    Args:
+        file_path (str): Путь к файлу с транзакциями.
+
+    Returns:
+        None
+    """
     if file_path.endswith('.json'):
         transactions = read_transactions_from_json(file_path)
     elif file_path.endswith('.csv'):
@@ -45,21 +52,8 @@ def main(file_path):
         logger.error("Unsupported file format")
         return
 
-    if transactions is None:
-        logger.error("No transactions found")
-        return
-
     for transaction in transactions:
-        date_value = transaction.get('date')
-        if date_value is not None:
-            if isinstance(date_value, str):
-                try:
-                    logger.info(format_datetime_to_date(date_value))
-                except ValueError as e:
-                    logger.error(f"Invalid date format in transaction: {date_value} - {e}")
-            else:
-                logger.error(f"Invalid date format: {date_value}")
-
+        logger.info(format_datetime_to_date(transaction['date']))
         if 'card' in transaction:
             try:
                 logger.info(mask_card_number(transaction['card']))
@@ -71,9 +65,10 @@ def main(file_path):
             except ValueError as e:
                 logger.error(e)
 
-    # Сортировка транзакций по дате
     sorted_transactions = sort_by_date(transactions)
     print(sorted_transactions)
+    mask_card = mask_card_number('1234567890123456')
+    print(mask_card)
 
 
 if __name__ == "__main__":
