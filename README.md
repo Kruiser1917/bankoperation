@@ -108,3 +108,14 @@ format_datetime_to_date(datetime_str: str) -> str
 
 Форматирует строку даты и времени в формат даты.
 universal_masking(input_str: str) -> str
+
+## Новый функционал
+
+Проект теперь поддерживает считывание данных о финансовых транзакциях из файлов форматов CSV и XLSX. 
+
+### Как использовать
+
+Для запуска скрипта с использованием файла JSON:
+```bash
+python src/main.py data/transactions.json
+```
