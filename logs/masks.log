@@ -1,5 +1,5 @@
-2024-06-29 18:05:56,947 - masks - INFO - маскировки карты
-2024-06-29 18:05:56,947 - masks - ERROR - Card number must be exactly 16 digits long
-2024-06-29 18:05:56,948 - masks - INFO - маскировка счета
-2024-06-29 18:05:56,949 - masks - ERROR - Account number must be at least 6 digits long
-2024-06-29 18:05:57,227 - masks - INFO - маскировки карты
+2024-06-30 16:43:33,872 - masks - INFO - маскировки карты
+2024-06-30 16:43:33,872 - masks - ERROR - Card number must be exactly 16 digits long
+2024-06-30 16:43:33,873 - masks - INFO - маскировка счета
+2024-06-30 16:43:33,873 - masks - ERROR - Account number must be at least 6 digits long
+2024-06-30 16:43:34,156 - masks - INFO - маскировки карты
